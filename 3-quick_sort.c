@@ -35,14 +35,18 @@ int partition(int *array, int low, int high, size_t size)
 	{
 		if (array[j] < pivot)
 		{
-			if (j != i)
+			if (j > i)
 				swap(array, i, j, size);
 			i++;
 		}
 	}
-	swap(array, i, high, size);
+
+	if (array[i] > pivot)
+		swap(array, i, high, size);
+
 	return (i);
 }
+
 /**
  * qs - recursively does quicksort on an array
  * @array: array to be sorted

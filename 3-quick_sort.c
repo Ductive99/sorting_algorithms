@@ -40,7 +40,8 @@ int partition(int *array, int low, int high, size_t size)
 			i++;
 		}
 	}
-	swap(array, i, high, size);
+	if (i != high)
+		swap(array, i, high, size);
 	return (i);
 }
 /**

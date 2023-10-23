@@ -57,14 +57,12 @@ void counting_sort(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 		countingArray[array[i]] += 1;
-
 	for (i = 0; i < k; i++)
 		countingArray[i + 1] += countingArray[i];
-
 	for (i = k; i > 0; i--)
 		countingArray[i] = countingArray[i - 1];
 
-	countingArray[0] = 0;
+	print_array(countingArray, k);
 
 	for (i = 0; i < size; i++)
 	{
@@ -75,8 +73,6 @@ void counting_sort(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 		array[i] = output[i];
-
-	print_array(countingArray, k + 1);
 
 	free(countingArray);
 	free(output);

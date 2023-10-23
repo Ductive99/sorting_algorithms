@@ -38,7 +38,7 @@ int find_k(int *array, size_t size)
 void counting_sort(int *array, size_t size)
 {
 	size_t i, k;
-	int *countingArray, *output, max, index;
+	int *countingArray, *output, max;
 
 	if (!array || size < 2)
 		return;

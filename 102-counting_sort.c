@@ -43,7 +43,10 @@ void counting_sort(int *array, size_t size)
 	if (!array || size < 2)
 		return;
 
-	max = find_k(array, size);
+	max = array[0];
+	for (i = 1; i < size; i++)
+		if (array[i] > max)
+			max = array[i];
 
 	countingArray = malloc((max + 1) * sizeof(int));
 	output = malloc(size * sizeof(int));
@@ -51,22 +54,20 @@ void counting_sort(int *array, size_t size)
 		return;
 
 	k = max + 1;
-
 	for (i = 0; i < k; i++)
 		countingArray[i] = 0;
 
 	for (i = 0; i < size; i++)
 		countingArray[array[i]] += 1;
-	for (i = 0; i < k; i++)
-		countingArray[i + 1] += countingArray[i];
-	for (i = k; i > 0; i--)
-		countingArray[i] = countingArray[i - 1];
+
+	for (i = 1; i < k; i++)
+		countingArray[i] += countingArray[i - 1];
 
 	print_array(countingArray, k);
 
 	for (i = 0; i < size; i++)
 	{
-		output[countingArray[array[i]]] = array[i];
+		output[countingArray[array[i]] - 1] = array[i];
 		countingArray[array[i]]--;
 	}
 

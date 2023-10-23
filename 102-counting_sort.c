@@ -17,8 +17,7 @@ int find_k(int *array, size_t size)
 	if (!array)
 		return (0);
 
-	max = array[0];
-	for (i = 0; i < size; i++)
+	for (max = array[0], i = 0; i < size; i++)
 	{
 		if (array[i] > max)
 			max = array[i];
@@ -52,6 +51,9 @@ void counting_sort(int *array, size_t size)
 		return;
 
 	k = max + 1;
+
+	for (i = 0; i < k; i++)
+		countingArray[i] = 0;
 
 	for (i = 0; i < size; i++)
 		countingArray[array[i]] += 1;
